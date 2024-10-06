@@ -184,7 +184,7 @@ $$
 
 ---
 
-#### ニュートン法のイメージ
+#### ニュートン法のイメージ / **Image of Newton-Raphson method**
 ![](./fig/NewtonIteration_Ani.gif)
 By Ralf Pfeifer - de:Image:NewtonIteration Ani.gif, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=2268473
 
@@ -214,11 +214,42 @@ $$
 \frac{d^n}{dt^n}x(t)= f\left(t, x(t), \frac{d}{dt}x(t), \frac{d^2}{dt^2}x(t), \dots, \frac{d^{n-1}}{dt^{n-1}}x(t)\right)
 $$
 
-- 初期値問題（initial value problem）
-    - 
+- 連続系を離散系で表現
+    - 離散時刻を$t_k(k=0,1,\dots,N-1)$，$t_{k+1}=t_k+\Delta t(k+1)$と表現
+    - $\Delta t(k+1)$は一定または可変
+
+
+---
+
+### 初期値問題 / **initial value problem**
+
+**P1** 初期値をどう定めるか
+**P2** p(ステップ分の過去の確定した値)をどこまで用いるか
+**P3** 刻み幅$\Delta t(k+1)$をどう定めるか
+**P4** テイラー展開を何次まで実施すべきか
+**P5** 微分の近似がしにくい微分方程式をどうすべきか（stiffness）
+
+- オイラー法，ルンゲクッタ法：自己出発型のためP1, P2は不問．
+- 次数や刻み幅$\Delta t(k+1)$を適用的に変化させることが考えられている．
 
 - **SciPy**のODEソルバーを活用する．
 - Utilize ODE solvers in **SciPy**.
+
+---
+
+### 質量・ダンパ・ばねシステム / **Mass-Spring-Damper System**
+
+質量 \( m \)、ダンパ（減衰係数） \( c \)、ばね（剛性係数） \( k \) のシステムの運動方程式：
+
+$$
+m \frac{d^2 x(t)}{dt^2} + c \frac{dx(t)}{dt} + k x(t) = F(t)
+$$
+
+- \( m \) : 質量
+- \( c \) : 減衰係数
+- \( k \) : ばねの剛性係数
+- \( x(t) \) : 変位（時間 \( t \) に依存）
+- \( F(t) \) : 外力（時間 \( t \) に依存）
 
 `NC_ODE.ipynb`
 
@@ -226,32 +257,49 @@ $$
 
 ## 2.4 確率の基礎 / **2.4 Basics of Probability**
 
----
-
 ### 確率とは / **What is Probability**
+- 確率
 
-- **確率**はある事象が起こる可能性の度合いです。
+$$
+\frac{期待する事象の起こる場合の数}{起こりうるすべての事象の場合の数}
+$$
+
 - **Probability** is the measure of the likelihood that an event will occur.
-- 0から1の範囲の値を取ります。
-- Takes values between 0 and 1.
+
+- 標本空間
+- 確率分布
+- 確率分布
 
 ---
 
 ### 離散確率と連続確率 / **Discrete and Continuous Probability**
 
-- **離散確率**は有限または可算無限の事象に適用。
-- **Discrete probability** applies to finite or countably infinite events.
-- **連続確率**は連続的な事象に適用。
-- **Continuous probability** applies to continuous events.
+- **離散確率変数** / **Discrete probability**
+
+$$
+X=\{x_1,x_2,\dots,x_n\} := \{x_i\}
+$$
+$$
+P(X=x_i)=p_i
+$$
+
+- **連続確率変数** / **Continuous probability**
+
+$$
+P(a\le X\le b)=\int_a^b{f(x)dx}
+$$
+
+- 連続確率変数で表現される時，"ATM利用時間が30秒である確率"は？
 
 ---
 
 ### 母集団、パラメータ、期待値、分散、平均 / **Population, Parameter, Expectation, Variance, Mean**
 
-- **母集団**は全体の集合。
+- **母集団**は調査対象となる集団全体．
 - **Population** is the entire set.
-- **パラメータ**は母集団の特性値。
+- **パラメータ**は母集団の特性値．母数ともいう．
 - **Parameter** is a characteristic value of the population.
+
 - **期待値**は平均的な結果。
 - **Expectation** is the average outcome.
 - **分散**はデータのばらつき。
@@ -259,53 +307,172 @@ $$
 
 ---
 
-### 確率分布 / **Probability Distributions**
+### 確率変数の平均と分散 / Mean and Variance
 
-- データや事象の発生パターンを記述します。
-- Describe the patterns of data or event occurrences.
-- 例：正規分布、二項分布。
-- Examples: Normal distribution, Binomial distribution.
+#### Discrete probability
+
+$$
+E(X) := \mu = \sum_{i} x_i P(X = x_i)
+$$
+
+$$
+V(X) := \sigma^2 = \sum_{i} (x_i - \mu)^2 P(X = x_i)
+$$
+
+#### Continuous probability
+
+$$
+E(X) := \mu = \int_{-\infty}^{\infty} x f_X(x) \, dx
+$$
+
+
+$$
+V(X) := \mu = E[(X - E[X])^2] =\int_{-\infty}^{\infty} (x - E(X))^2 f_X(x) \, dx
+$$
+
+---
+
+### 離散確率分布 / Discrete Probability Distributions
+
+#### ベルヌーイ分布 / **Bernoulli Distribution**
+
+- 成功（1）または失敗（0）しかない試行の分布．（$p$: 成功確率）
+  $$
+  f(k;p) = p^k (1 - p)^{1 - k}, \quad k \in [0, 1]
+  $$
+  $$
+  E[X] = p, \quad V[X] = p(1 - p)
+  $$
+
+#### 二項分布 / **Binomial Distribution**
+
+- $n$回のベルヌーイ試行における成功の数の分布．（$n$: 試行回数, $p$: 成功確率）
+  $$
+  f(k; p) = \binom{n}{k} p^x (1 - p)^{n - k}, \quad k = 0, 1, 2, \dots, n
+  $$
+  $$
+  E[X] = n p, \quad V[X] = n p (1 - p)
+  $$
+
+---
+
+#### ポアソン分布 / **Poisson Distribution**
+
+- 一定の時間または空間内におけるランダムなイベントの発生回数の分布
+  - $\lambda$: 平均発生率 / Average rate of occurrence
+  $$
+  f(k;\lambda) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots
+  $$
+  $$
+  E[X] = \lambda, \quad V[X] = \lambda
+  $$
+
+---
+
+#### 一様分布 / **Discrete Uniform Distribution**
+
+- ある実数区間[a,b]において，すべての値を同等に取る分布．
+  $$
+  f(x) = 
+    \begin{cases}
+        \frac{1}{b-a} & (a \le x \le b)\\
+        0 & (\text{otherwise})
+    \end{cases}
+  $$
+  $$
+  E[X] = \frac{1}{2}(a+b), \quad V[X] = \frac{1}{12}(b-a)^2
+  $$
+
+---
+
+#### 正規分布 / **Normal Distribution**
+- 
+  $$
+  f(x) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{(x - \mu)^2}{2 \sigma^2}\right)
+  $$
+  $$
+  E[X] = \mu, \quad  V[X] = \sigma^2
+  $$
+
+---
+
+#### 指数分布 / **Exponential Distribution**
+
+- ランダムなイベントの間隔をモデル化する分布
+  $$
+  f(x) = \lambda e^{-\lambda x}, \quad x \geq 0
+  $$
+  $$
+  E[X] = \frac{1}{\lambda}, \quad  V[X] = \frac{1}{\lambda^2}
+  $$
+
+---
+
+#### ベータ分布 / **Beta Distribution**
+
+- (0,1)の区間にある確率の分布
+    - $\alpha$, $\beta$: 形状パラメータ / Shape parameters
+    - $B(\alpha, \beta)$: ベータ関数 / Beta function
+  $$
+  f(x) = \frac{x^{\alpha - 1}(1 - x)^{\beta - 1}}{B(\alpha, \beta)}, \quad 0 \leq x \leq 1
+  $$
+  $$
+  E[X] = \frac{\alpha}{\alpha + \beta}, \quad
+  V[X] = \frac{\alpha \beta}{(\alpha + \beta)^2 (\alpha + \beta + 1)}
+  $$
+
+![bg w:40em right:50%](./fig/beta.png)
+
 
 ---
 
 ## 2.5 疑似乱数とSciPyを用いた確率の計算 / **2.5 Pseudo-Random Numbers and Probability Calculations Using SciPy**
 
----
-
 ### 一様乱数の生成 / **Generation of Uniform Random Numbers**
+- **線形合同法**
 
-- **NumPy**で一様分布の乱数を生成します。
-- Generate uniformly distributed random numbers with **NumPy**.
-- `numpy.random.uniform()`関数を使用。
-- Use the `numpy.random.uniform()` function.
+$$
+X_{n+1} = (a X_n + n) \, \text{mod} \, M
+$$
+
+- **メルセンヌ・ツイスタ（MT19937）**
+    - 疑似乱数生成アルゴリズムの一種．非常に長い周期と高い性能を持つ（2^{19937} - 1）．
+    - Pythonや多くのプログラミング言語でデフォルトの乱数生成アルゴリズムとして採用．
 
 ---
 
 ### 正規乱数の生成 / **Generation of Normal Random Numbers**
+- ボックス・ミュラー法
+    - 互いに独立の一様乱数$U_1,U_2$を用いて，
 
-- 正規分布に従う乱数を生成。
-- Generate random numbers following a normal distribution.
-- `numpy.random.normal()`関数を使用。
-- Use the `numpy.random.normal()` function.
+$$
+Z_0 = \sqrt{-2 \ln U_1} \cos(2 \pi U_2)
+$$
+
+$$
+Z_1 = \sqrt{-2 \ln U_1} \sin(2 \pi U_2)
+$$
+
+- 他に，逆関数法，棄却法
+- 準モンテカルロサンプリングなど
 
 ---
 
 ### scipy.statsの使い方 / **How to Use scipy.stats**
 
-- **scipy.stats**は統計的な関数を提供します。
-- **scipy.stats** offers statistical functions.
-- 確率分布の定義や統計量の計算が可能。
-- Allows definition of probability distributions and calculation of statistics.
+| メソッド    | 説明 / Description                                                        | 用途 / Purpose                                             |
+|:------------|:-------------------------------------------------------------------------|:----------------------------------------------------------|
+| `rvs`       | ランダム変数を生成します / Generates random variables                     | 乱数の生成 / Generate random numbers                       |
+| `pmf`       | 離散分布の確率質量関数 / Probability Mass Function (for discrete dist.)   | 離散的な値が取る確率を計算 / Compute probability of a discrete outcome |
+| `pdf`       | 連続分布の確率密度関数 / Probability Density Function (for continuous dist.) | 連続的な値の確率密度を計算 / Compute the probability density of a continuous outcome |
+| `cdf`       | 累積分布関数 / Cumulative Distribution Function                          | 値がある閾値以下になる確率を計算 / Compute the probability that a random variable is less than or equal to a certain value |
+| `ppf`       | 分位点関数 / Percent Point Function (Inverse of CDF)                     | 累積確率に対応する値を返す / Returns the value corresponding to a given cumulative probability |
+| `isf`       | サバイバル分位点関数 / Inverse Survival Function (1 - CDF)               | 1 - CDF の逆関数で、累積確率の逆を返す / Returns the value corresponding to a given upper cumulative probability (1 - CDF) |
+| `interval`  | 信頼区間を計算 / Confidence Interval Calculation                         | 指定した信頼度に基づいて分布の区間を計算 / Compute the confidence interval for the given distribution |
 
----
 
-### パーセント点と確率の各種計算例 / **Examples of Various Calculations of Percentiles and Probabilities**
-
-- **パーセント点**を計算して閾値を求めます。
-- Calculate **percentiles** to find thresholds.
-- 累積分布関数を用いて確率を計算。
-- Use cumulative distribution functions to compute probabilities.
-
+- パーセント点と確率の各種計算例 / **Examples of Various Calculations of Percentiles and Probabilities**
+    - `NC_ProbabilityCalc.ipynb`
 
 
 
