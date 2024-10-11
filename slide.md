@@ -14,6 +14,8 @@ style:
 # 第1章 はじめに
 # **Chapter 1 Introduction**
 
+--
+
 ## 1.1 モデルとシミュレーション
 ## **1.1 Models and Simulation**
 
@@ -22,48 +24,69 @@ style:
 ### モデルとは / **What is a Model**
 
 - **モデル** (model) とは，対象とする物体や現象に対して，取り上げたい問題をよく表せるような本質的なものだけを抜き出して，何らかの形で表現したもの．
-    - モデルの分け方は様々．ここでは，物理モデル (physical model) と論理モデル (logical model) に分けている．
-    - [link]
-- A **model** is a simplified or abstract representation of real-world systems or phenomena.
+  - ref. “All Models are wrong, but some are useful.” (Box, 1976)
+- モデルの分け方は様々: 物理モデル (physical model) / 論理モデル (logical model)
+  - ref. https://sebokwiki.org/wiki/Types_of_Models
+
+--
+- A **model** is a simplified version of something - a graphical, mathematical, or physical representation that abstracts reality to eliminate some complexity. (INCOSE)
+- Model categorization: physical model, logical model
+
+---
+
+#### Conceptual Model and Computerized Model 
+Sargent (1998)
+![bg right:60%](sargent.png)
 
 ---
 
 ### シミュレーションとは / **What is Simulation**
 
 - **シミュレーション**とは，モデルを用いてシステムの挙動を再現・予測する手法．
-    - 疑似体験，予測，推定
+    - 目的：疑似体験，予測，推定
+
+--
 
 - **Simulation** is a method of replicating or predicting the behavior of a system using a model.
-    - simulation, forecast, estimate
+    - Objective: simulated experience, forecast, estimate
 
 ---
 
 ### モデルの性質とシステム / **Properties of Models and Systems**
 
 - 動的モデル (dynamical model)
-    - 性質1: 入力を与えると出力が生じる．入力を止めてもしばらく出力が続く．
-    - 性質2: 現在の出力は現在より過去の入力の影響により生じているもので，将来の入力の影響は受けていない．（因果性）
+  - 性質1: 入力を与えると出力が生じる．入力を止めてもしばらく出力が続く．
+  - 性質2: 現在の出力は現在より過去の入力の影響により生じているもので，将来の入力の影響は受けていない．（因果性）
+- 過渡状態と定常状態
+- 決定論的モデルと非決定論的モデル（確率モデル: 出力が確率過程）
 
-- 過渡状態（transient state）と定常状態（steady state）
-
-- 決定論的モデル（deterministic model）と非決定論的モデル（non-deterministic model）
-    - 確率モデル (stochastic model): 出力が確率過程（stochastic process）
-
-- **システム (system)**
+--
+- Dynamical model
+  - Property 1: When an input is given, an output is produced. Even if the input is stopped, the output continues for a while.
+  - Property 2: The current output is produced by the influence of the past input, and is not influenced by the future input. (causality)
+- Transient state and steady state
+- Deterministic and non-deterministic model (Stochastic model and stochastic process)
 
 ---
 
-## 1.2 Python、Anaconda、パッケージ / **1.2 Python, Anaconda, and Packages**
+### システム / **System**
 
-- **Python**は汎用的な高水準プログラミング言語です。
-- **Anaconda**はデータサイエンス向けのPythonディストリビューション（配布物，パッケージのセット）．
-    - パッケージ管理と仮想環境の構築が容易．
+---
+
+## 1.2 Python, Anaconda, パッケージ / **1.2 Python, Anaconda and Packages**
+
+- [**Python**](https://www.python.org/)：汎用的な高水準プログラミング言語．
+- [**Anaconda**](https://www.anaconda.com/)：データサイエンス向けのPythonディストリビューション（配布物，パッケージのセット）．パッケージ管理と仮想環境の構築が容易．
 - 関数，モジュール，パッケージ，ライブラリ
+  - [Python標準ライブラリ](https://docs.python.org/ja/3/library/)
+
+--
 
 - **Python** is a versatile, high-level programming language.
 - **Anaconda** is a Python distribution tailored for data science.
     - Simplifies package management and virtual environment setup.
-- Functionm module, package, library
+- Function, module, package, library
+  - [The Python Standard Library](https://docs.python.org/3/library/)
 
 ---
 
@@ -101,7 +124,9 @@ style:
 
 - **統合開発環境**(**IDE**)としてJupyter NotebookやVisual Studio Code(VSCode)を使用．
     - コードの編集，実行，デバッグが容易
-- クラウドコンピューティング (Google Colaboratory)
+- クラウドコンピューティング ([Google Colaboratory](https://colab.research.google.com/))
+
+--
 
 - Use **Integrated Development Environments (IDE)** like Jupyter Notebook or Visual Studio Code.
     - Facilitate easy code editing, execution, and debugging.
@@ -112,9 +137,9 @@ style:
 ## 1.4 ちょっとした流儀 / **1.4 Some Conventions**
 
 - matplotlib
-    - `IN_Matplotlib.ipynb`
-- .ipynbと.py
-    - `IN_TestScript.py`
+    - `code/Chap1/IN_Matplotlib.ipynb`
+- .ipynb and .py
+    - `code/Chap1/IN_Matplotlib.ipynb`
 - 文字コード (character code) とマジックコマンド (magic commands)
 
 ---
@@ -122,14 +147,18 @@ style:
 # 第2章 数値計算と数学の基礎
 # **Chapter 2 Basics of Numerical Computation and Mathematics**
 
+---
+
 ## 2.1 数学記号の用い方
 ## **2.1 Usage of Mathematical Symbols**
 
----
-
-- ベクトル(vector)，行列(matrix)，ノルム（norm）
+- ベクトル(vector)，行列(matrix)
+- ノルム（norm）
+  - 平面あるいは空間における幾何学的ベクトルの "長さ" の概念の一般化であり、ベクトル空間に対して「距離」を与えるための数学の道具(wikipedia)
+  - a function from a real or complex vector space to the non-negative real numbers that behaves in certain ways like the distance from the origin (wikipedia)
 - $L^p$ノルム
-    - $L^2$ノルム：ユークリッドノルム
+  - $L^1$ノルム：マンハッタンノルム (Manhattan norm)
+  - $L^2$ノルム：ユークリッドノルム (Euclid norm)
 
 $$
 \sqrt[p]{|x_1|^p+|x_2|^p+\dots+|x_n|^p}
@@ -142,17 +171,21 @@ $$
 ### 0.1変換誤差とIEEE754規格 / **0.1 Conversion Error and IEEE754 Standard**
 
 - 0.1は二進数で正確に表現できない．
-- 0.1 cannot be represented exactly in binary.
-
 - **IEEE754**規格は浮動小数点数の表現方法を定めている．
+
+--
+
+- 0.1 cannot be represented exactly in binary.
 - The **IEEE754** standard defines how floating-point numbers are represented.
 
-
+---
 
 ### 機械イプシロン / **Machine Epsilon**
 
 - **機械イプシロン**: 1よりも大きい最小の数と1との差（コンピュータが区別できる最小の差分）．数値計算の精度限界．
     - `==`や`!=`の判断には留意．
+
+--
 - **Machine epsilon** is the smallest difference distinguishable by the computer. Indicates the precision limit of numerical computations.
 
 ---
@@ -160,10 +193,13 @@ $$
 ### 丸め、情報落ち、桁落ち / **Rounding, Cancellation Error, Loss of Significance**
 
 - **丸め**は計算結果を有限桁に収めるための処理．
-- **Rounding** adjusts calculation results to fit finite digits.
 - **情報落ち**は大きな数値から小さな数値を足し引きする際に発生．
-- **Cancellation error** occurs when adding/subtracting a small number from a large one.
 - **桁落ち**は有効数字が減少する現象．
+
+--
+
+- **Rounding** adjusts calculation results to fit finite digits.
+- **Cancellation error** occurs when adding/subtracting a small number from a large one.
 - **Loss of significance** is the reduction of significant digits.
 
 ---
@@ -296,13 +332,14 @@ $$
 ### 母集団、パラメータ、期待値、分散、平均 / **Population, Parameter, Expectation, Variance, Mean**
 
 - **母集団**は調査対象となる集団全体．
-- **Population** is the entire set.
 - **パラメータ**は母集団の特性値．母数ともいう．
-- **Parameter** is a characteristic value of the population.
+- **期待値**は平均的な結果．
+- **分散**はデータのばらつき．
 
-- **期待値**は平均的な結果。
+--
+- **Population** is the entire set.
+- **Parameter** is a characteristic value of the population.
 - **Expectation** is the average outcome.
-- **分散**はデータのばらつき。
 - **Variance** measures data dispersion.
 
 ---
@@ -502,7 +539,7 @@ section {
 
 /* 箇条書きリストのカスタマイズ */
 ul {
-  font-size: 20pt;  /* 箇条書きのフォントサイズ */
+  font-size: 18pt;  /* 箇条書きのフォントサイズ */
 }
 
 table {
