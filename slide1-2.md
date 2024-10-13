@@ -26,17 +26,19 @@ style:
 - **モデル** (model) とは，対象とする物体や現象に対して，取り上げたい問題をよく表せるような本質的なものだけを抜き出して，何らかの形で表現したもの．
   - ref. “All Models are wrong, but some are useful.” (Box, 1976)
 - モデルの分け方は様々: 物理モデル (physical model) / 論理モデル (logical model)
+  - 概念モデル (conceptual model) と数値計算モデル (computational model)
   - ref. https://sebokwiki.org/wiki/Types_of_Models
 
 --
 - A **model** is a simplified version of something - a graphical, mathematical, or physical representation that abstracts reality to eliminate some complexity. (INCOSE)
 - Model categorization: physical model, logical model
-
+  - Conceptual model and computational model
+ 
 ---
 
 #### Conceptual Model and Computerized Model 
-Sargent (1998)
-![bg right:60%](sargent.png)
+- Sargent (1998)
+![bg right:60%](./fig/sargent.png)
 
 ---
 
@@ -70,6 +72,9 @@ Sargent (1998)
 ---
 
 ### システム / **System**
+- A system is a construct or collection of different elements that together produce results not obtainable by the elements alone (INCOSE)
+- System has Objective, Multiple elements, Structure (network), and Controllability (Fujita, 2023)
+![bg right:62%](./fig/system.png)
 
 ---
 
@@ -139,7 +144,7 @@ Sargent (1998)
 - matplotlib
     - `code/Chap1/IN_Matplotlib.ipynb`
 - .ipynb and .py
-    - `code/Chap1/IN_Matplotlib.ipynb`
+    - `code/Chap1/IN_TestScript.py`
 - 文字コード (character code) とマジックコマンド (magic commands)
 
 ---
@@ -166,35 +171,48 @@ $$
 
 ---
 
+#### Ref. Lasso回帰とRidge回帰 / **Lasso Regression and Ridge Regression**
+- **正則化**：自由度の数をうまく減らし，過学習を防ぐ．
+**Regularization**: The number of degrees of freedom is reduced appropriately to prevent overfitting.
+
+- **L1正則化（Lasso回帰）**: L1ノルム$\| \mathbf{w} \|_1$を用いた回帰分析．寄与が小さい重みをゼロにする．
+**L1 regularization (Lasso regression)**: Regression analysis using the L1 norm $\| \mathbf{w} \|_1$. We set the weights with small contributions to zero.
+
+
+$$
+\min_{\mathbf{w}} \left( \sum_{i=1}^{n} (y_i - \mathbf{x}_i^T \mathbf{w})^2 + \lambda \| \mathbf{w} \|_1 \right) 
+$$
+
+- **L2正則化（Ridge回帰）**: L2ノルム$\| \mathbf{w} \|_2$を用いた回帰分析．寄与が小さい重みを抑える．
+**L2 regularization (Ridge regression)**: Regression analysis using the L2 norm $\| \mathbf{w} \|_2$. It suppresses weights with small contributions.
+
+$$
+\min_{\mathbf{w}} \left( \sum_{i=1}^{n} (y_i - \mathbf{x}_i^T \mathbf{w})^2 + \lambda \| \mathbf{w} \|_2^2 \right)
+$$
+
+---
+
 ## 2.2 有限桁のために生じる数値誤差 / **2.2 Numerical Errors Due to Finite Digits**
 
-### 0.1変換誤差とIEEE754規格 / **0.1 Conversion Error and IEEE754 Standard**
+### 0.1変換誤差とIEEE754規格 / **0.1 Conversion Error and IEEE754**
 
 - 0.1は二進数で正確に表現できない．
 - **IEEE754**規格は浮動小数点数の表現方法を定めている．
+- **機械イプシロン**: 1よりも大きい最小の数と1との差（コンピュータが区別できる最小の差分）．数値計算の精度限界（`==`や`!=`の判断には留意）．
 
 --
 
 - 0.1 cannot be represented exactly in binary.
 - The **IEEE754** standard defines how floating-point numbers are represented.
-
----
-
-### 機械イプシロン / **Machine Epsilon**
-
-- **機械イプシロン**: 1よりも大きい最小の数と1との差（コンピュータが区別できる最小の差分）．数値計算の精度限界．
-    - `==`や`!=`の判断には留意．
-
---
 - **Machine epsilon** is the smallest difference distinguishable by the computer. Indicates the precision limit of numerical computations.
 
 ---
 
 ### 丸め、情報落ち、桁落ち / **Rounding, Cancellation Error, Loss of Significance**
 
-- **丸め**は計算結果を有限桁に収めるための処理．
-- **情報落ち**は大きな数値から小さな数値を足し引きする際に発生．
-- **桁落ち**は有効数字が減少する現象．
+- **丸め**: 計算結果を有限桁に収めるための処理．
+- **情報落ち**: 大きな数値から小さな数値を足し引きする際に発生．
+- **桁落ち**: 有効数字が減少する現象．
 
 --
 
@@ -206,7 +224,7 @@ $$
 
 ## 2.3 いくつかの数値計算 / **2.3 Some Numerical Calculations**
 
--　数値解（numerical solution）と解析解（analytic solution）
+- 数値解（numerical solution）と解析解（analytic solution）
 
 ### 連立一次方程式 / **Systems of Linear Equations**
 
@@ -214,7 +232,7 @@ $$
 ### 方程式 / **Equations**
 
 - 二次方程式の解の比較と非線形方程式の解法（ニュートン–ラフソン法）
-- Solve nonlinear equations using numerical methods.  (Example: Newton-Raphson method)
+Solve nonlinear equations using numerical methods.  (Example: Newton-Raphson method)
 
 `NC_Equation.ipynb`
 
@@ -229,30 +247,36 @@ By Ralf Pfeifer - de:Image:NewtonIteration Ani.gif, CC BY-SA 3.0, https://common
 ### 補間 / **Interpolation**
 
 - 既知のデータ点から未知の値を推定する．
-- Estimate unknown values from known data points.
-
 - カーブフィッティング (curve fitting)
-- ある距離で測った誤差のノルムを最小化する方法の利用が一般的．
+  - ある距離で測った誤差のノルムを最小化する方法の利用が一般的．
 - オーバーフィッティング (overfitting)，ルンゲの現象（Runge's Phenomenon）
-    - 字数が大きい場合
 
+--
+
+- Estimating unknown values from known data points.
+- Curve fitting
+  - minimizing the norm of the error measured at a certain distance
+- Overfitting, Runge's Phenomenon
 `NC_Interpolation.ipynb`
 
 ---
 
 ### 常微分方程式 / **Ordinary Differential Equations (ODE)**
 
-- 独立変数（ここでは$t$）と関数$f(t,x)$，及びその導関数を含む方程式．システムの連続的な変化をモデル化する．
-    - 独立変数: 時間や位置など．
-- Model continuous changes in a system.
+- 独立変数（ここでは$t$）と関数$f(t,x)$，及びその導関数を含む方程式．システムの連続的な変化をモデル化する．（独立変数: 時間や位置など）
 
 $$
 \frac{d^n}{dt^n}x(t)= f\left(t, x(t), \frac{d}{dt}x(t), \frac{d^2}{dt^2}x(t), \dots, \frac{d^{n-1}}{dt^{n-1}}x(t)\right)
 $$
 
-- 連続系を離散系で表現
-    - 離散時刻を$t_k(k=0,1,\dots,N-1)$，$t_{k+1}=t_k+\Delta t(k+1)$と表現
-    - $\Delta t(k+1)$は一定または可変
+- 連続系を離散系で表現: 離散時刻を$t_k(k=0,1,\dots,N-1)$，$t_{k+1}=t_k+\Delta t(k+1)$と表現
+  - $\Delta t(k+1)$は一定または可変
+
+--
+- An equation that includes an independent variable (here, $t$), a function $f(t,x)$, and its derivative. It models the continuous change of a system. 
+(Independent variable: time, position, etc.)
+- Continuous systems are expressed as discrete systems: Discrete time is expressed as $t_k(k=0,1,\dots,N-1)$ and $t_{k+1}=t_k+\Delta t(k+1)$
+  - $\Delta t(k+1)$ is either constant or variable
 
 
 ---
@@ -265,50 +289,54 @@ $$
 **P4** テイラー展開を何次まで実施すべきか
 **P5** 微分の近似がしにくい微分方程式をどうすべきか（stiffness）
 
-- オイラー法，ルンゲクッタ法：自己出発型のためP1, P2は不問．
-- 次数や刻み幅$\Delta t(k+1)$を適用的に変化させることが考えられている．
+--
 
+**P1** How to determine the initial value
+**P2** How far back to use p(the previously determined value for the number of steps)
+**P3** How to determine the increment width $\Delta t(k+1)$
+**P4** How many terms of the Taylor expansion should be carried out
+**P5** What to do with differential equations that are difficult to approximate (stiffness)
+
+<!-- - オイラー法，ルンゲクッタ法：自己出発型のためP1, P2は不問．
+- 次数や刻み幅$\Delta t(k+1)$を適用的に変化させることが考えられている．
 - **SciPy**のODEソルバーを活用する．
-- Utilize ODE solvers in **SciPy**.
+- Utilize ODE solvers in **SciPy**. -->
 
 ---
 
 ### 質量・ダンパ・ばねシステム / **Mass-Spring-Damper System**
 
-質量 \( m \)、ダンパ（減衰係数） \( c \)、ばね（剛性係数） \( k \) のシステムの運動方程式：
+質量 ( mass: m )、ダンパ (damper, 減衰係数: c)、ばね (spring, 剛性係数: k) の運動方程式 (equation of motion):
 
 $$
 m \frac{d^2 x(t)}{dt^2} + c \frac{dx(t)}{dt} + k x(t) = F(t)
 $$
 
-- \( m \) : 質量
-- \( c \) : 減衰係数
-- \( k \) : ばねの剛性係数
-- \( x(t) \) : 変位（時間 \( t \) に依存）
-- \( F(t) \) : 外力（時間 \( t \) に依存）
+- $m$ : 質量 / mass
+- $c$ : 減衰係数 / damper coefficient
+- $k$ : ばねの剛性係数 / spring coefficient
+- $x(t)$ : 変位（時間 $t$ に依存） / position
+- $F(t)$ : 外力（時間 $t$ に依存） / external force
 
 `NC_ODE.ipynb`
 
 ---
 
 ## 2.4 確率の基礎 / **2.4 Basics of Probability**
+<!-- ### 確率とは / **What is Probability** -->
+- **Probability** is the measure of the likelihood that an event will occur.
+  <!-- - 標本空間 / Sample space
+  - 確率分布 / Probability distribution -->
 
-### 確率とは / **What is Probability**
-- 確率
-
-$$
+<!-- $$
 \frac{期待する事象の起こる場合の数}{起こりうるすべての事象の場合の数}
 $$
 
-- **Probability** is the measure of the likelihood that an event will occur.
+$$
+\frac{\textrm{number of cases where the expected events occur}}{\textrm{number of cases where all possible events occur}}
+$$ -->
 
-- 標本空間
-- 確率分布
-- 確率分布
-
----
-
-### 離散確率と連続確率 / **Discrete and Continuous Probability**
+#### 離散確率と連続確率 / **Discrete and Continuous Probability**
 
 - **離散確率変数** / **Discrete probability**
 
@@ -326,6 +354,7 @@ P(a\le X\le b)=\int_a^b{f(x)dx}
 $$
 
 - 連続確率変数で表現される時，"ATM利用時間が30秒である確率"は？
+When expressed as a continuous probability, what is the probability of “using time of ATM = 30 seconds”?
 
 ---
 
@@ -344,7 +373,7 @@ $$
 
 ---
 
-### 確率変数の平均と分散 / Mean and Variance
+### 確率変数の平均と分散 / **Mean and Variance**
 
 #### Discrete probability
 
@@ -373,7 +402,8 @@ $$
 
 #### ベルヌーイ分布 / **Bernoulli Distribution**
 
-- 成功（1）または失敗（0）しかない試行の分布．（$p$: 成功確率）
+- 成功（1）または失敗（0）しかない試行の分布（$p$: 成功確率）
+The Bernoulli distribution models binary outcomes, such as success/failure or true/false, with probability $p$ for success.
   $$
   f(k;p) = p^k (1 - p)^{1 - k}, \quad k \in [0, 1]
   $$
@@ -383,7 +413,8 @@ $$
 
 #### 二項分布 / **Binomial Distribution**
 
-- $n$回のベルヌーイ試行における成功の数の分布．（$n$: 試行回数, $p$: 成功確率）
+- $n$回のベルヌーイ試行における成功の数の分布（$n$: 試行回数, $p$: 成功確率）
+The Binomial distribution models the number of successes in $n$ independent trials, each with success probability $p$.
   $$
   f(k; p) = \binom{n}{k} p^x (1 - p)^{n - k}, \quad k = 0, 1, 2, \dots, n
   $$
@@ -395,8 +426,10 @@ $$
 
 #### ポアソン分布 / **Poisson Distribution**
 
-- 一定の時間または空間内におけるランダムなイベントの発生回数の分布
-  - $\lambda$: 平均発生率 / Average rate of occurrence
+- 一定の時間または空間内におけるランダムなイベントの発生回数の分布 ($\lambda$: 平均発生率)
+（例：病院への救急患者の到着数, ウェブサイトへのアクセス数）
+The Poisson distribution models the number of rare events occurring in a fixed interval of time or space, with average rate $\lambda$. 
+(e.g., the number of emergency patients at a hospital, the number of visits to a website.)
   $$
   f(k;\lambda) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots
   $$
@@ -404,11 +437,14 @@ $$
   E[X] = \lambda, \quad V[X] = \lambda
   $$
 
+<!-- ![](./fig/poisson.png) -->
+
 ---
 
 #### 一様分布 / **Discrete Uniform Distribution**
 
 - ある実数区間[a,b]において，すべての値を同等に取る分布．
+The Uniform distribution assigns equal probability to all outcomes within the interval [a, b].
   $$
   f(x) = 
     \begin{cases}
@@ -420,10 +456,9 @@ $$
   E[X] = \frac{1}{2}(a+b), \quad V[X] = \frac{1}{12}(b-a)^2
   $$
 
----
-
 #### 正規分布 / **Normal Distribution**
-- 
+- 自然界や社会現象における多くの連続データ（例：身長, 体重, 試験の得点）の分布をモデル化．最もよく使われる確率分布の一つ．
+The Normal distribution, often referred to as the Gaussian distribution, is used to model continuous variables that cluster around a mean.
   $$
   f(x) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{(x - \mu)^2}{2 \sigma^2}\right)
   $$
@@ -435,7 +470,8 @@ $$
 
 #### 指数分布 / **Exponential Distribution**
 
-- ランダムなイベントの間隔をモデル化する分布
+- ランダムなイベントの間隔をモデル化する分布（例：次の電話までの時間，電子部品の寿命）
+The Exponential distribution is commonly used to model the time between events in a Poisson process.
   $$
   f(x) = \lambda e^{-\lambda x}, \quad x \geq 0
   $$
@@ -443,11 +479,19 @@ $$
   E[X] = \frac{1}{\lambda}, \quad  V[X] = \frac{1}{\lambda^2}
   $$
 
+###### ガンマ分布 / **Gamma Distribution**
+- 待ち時間をモデル化するために使用される．指数分布の一般化された形．
+The Gamma distribution is a generalization of the Exponential distribution, often used to model waiting times in a process.
+
+###### ワイブル分布 / **Weibull Distribution**
+- 製品やシステムの寿命，故障時間をモデル化するために広く使われる確率分布．
+The Weibull distribution is widely used in reliability engineering and survival analysis to model the lifetime or failure time of products and systems.
 ---
 
 #### ベータ分布 / **Beta Distribution**
 
-- (0,1)の区間にある確率の分布
+- (0,1)の区間にある確率の分布．確率や割合（例：成功率，投票率，信頼度）のモデリングに使用．ベイズ統計でも利用．
+The Beta distribution is used to model probabilities or proportions, commonly applied in Bayesian statistics.
     - $\alpha$, $\beta$: 形状パラメータ / Shape parameters
     - $B(\alpha, \beta)$: ベータ関数 / Beta function
   $$
@@ -460,27 +504,29 @@ $$
 
 ![bg w:40em right:50%](./fig/beta.png)
 
-
 ---
 
 ## 2.5 疑似乱数とSciPyを用いた確率の計算 / **2.5 Pseudo-Random Numbers and Probability Calculations Using SciPy**
 
 ### 一様乱数の生成 / **Generation of Uniform Random Numbers**
-- **線形合同法**
+- **線形合同法 / Linear Congruential Method**
 
 $$
 X_{n+1} = (a X_n + n) \, \text{mod} \, M
 $$
 
-- **メルセンヌ・ツイスタ（MT19937）**
-    - 疑似乱数生成アルゴリズムの一種．非常に長い周期と高い性能を持つ（2^{19937} - 1）．
-    - Pythonや多くのプログラミング言語でデフォルトの乱数生成アルゴリズムとして採用．
+- **メルセンヌ・ツイスタ / Mersenne Twister （MT19937）**
+  - 疑似乱数生成アルゴリズムの一種．非常に長い周期と高い性能を持つ（$2^{19937} - 1$）．
+  A type of pseudorandom number generation algorithm with an extremely long period and high performance($2^{19937}−1$). 
+  - Pythonや多くのプログラミング言語でデフォルトの乱数生成アルゴリズムとして採用．
+  Default random number generation algorithm in Python and many other programming languages.
 
 ---
 
 ### 正規乱数の生成 / **Generation of Normal Random Numbers**
-- ボックス・ミュラー法
+- ボックス・ミュラー法 / Box-Muller Method
     - 互いに独立の一様乱数$U_1,U_2$を用いて，
+    Using two independent uniform random numbers $U_1$ and $U_2$
 
 $$
 Z_0 = \sqrt{-2 \ln U_1} \cos(2 \pi U_2)
@@ -490,9 +536,10 @@ $$
 Z_1 = \sqrt{-2 \ln U_1} \sin(2 \pi U_2)
 $$
 
-- 他に，逆関数法，棄却法
-- 準モンテカルロサンプリングなど
 
+
+- 他に，逆関数法，棄却法 など
+Other methods: Inverse Transform Sampling, Rejection Sampling etc.
 ---
 
 ### scipy.statsの使い方 / **How to Use scipy.stats**
@@ -511,8 +558,59 @@ $$
 - パーセント点と確率の各種計算例 / **Examples of Various Calculations of Percentiles and Probabilities**
     - `NC_ProbabilityCalc.ipynb`
 
+---
 
+### 演習問題 / **Exercise**
 
+次の非線形常微分方程式をPythonを用いて解いてください．
+Solve the following nonlinear ordinary differential equation (ODE) using Python.
+
+$$
+\frac{dy}{dx} = y^2 - x
+$$
+
+- 初期条件 (initial condition): $y(0) = 1$
+- 範囲 (range): $x \in [0, 2]$
+
+**ヒント**: `scipy.integrate.solve_ivp` を使用して数値的に解くことができます。  
+**Hint**: You can use `scipy.integrate.solve_ivp` to solve this numerically.
+
+---
+
+### 解答例 (Pythonコード) / **Example Solution (Python Code)**
+
+```python
+import numpy as np
+from scipy.integrate import solve_ivp
+import matplotlib.pyplot as plt
+
+# 非線形常微分方程式 dy/dx = y^2 - x を定義
+# Define the nonlinear ODE: dy/dx = y^2 - x
+def dydx(x, y):
+    return y**2 - x
+
+# 初期条件 y(0) = 1
+# Initial condition y(0) = 1
+y0 = [1]
+
+# x の範囲 [0, 2]
+# Range of x: [0, 2]
+x_range = (0, 2)
+
+# 微分方程式を解く
+# Solve the ODE
+solution = solve_ivp(dydx, x_range, y0, t_eval=np.linspace(0, 2, 100))
+
+# 結果をプロット
+# Plot the result
+plt.plot(solution.t, solution.y[0], label="y(x)")
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title(r'$\frac{dy}{dx} = y^2 - x$')
+plt.legend()
+plt.grid(True)
+plt.show()
+```
 
 <style>
 /* スライドの基本設定 */
