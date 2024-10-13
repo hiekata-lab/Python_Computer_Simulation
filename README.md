@@ -1,8 +1,38 @@
-# 
+# 2024Autumn - Computer Simulation
 
-## Pythonコンピュータシミュレーション入門<br>　人文・自然・社会科学の数理モデル
+### Objective
+- Understand the fundamentals on computer simulation in general and several specific methods using Python
+- Utilize GitHub or other tools in effective ways
+### Date and Time:
+- Every Tuesday, 15:30-17:00
+- From Oct 15 (w/o Oct 29, Nov 19)
+### Members
+- All LISD Members
+### How to proceed
+- Role
+    - PIC (lecture): Prepare the material for presentation
+        - Try Marp
+    - Others: Read the chapter relevant to the topic
+- Timeline
+    - Lecture
+        - 40 mins (+ Q&A for max 10 mins)
+        - include quiz as much as possible (to be more interactive)
+### Preparation
+- Create GitHub account
+- Join hiekata lab team
+- Clone this repository
+### Textbooks
+- [**Pythonコンピュータシミュレーション入門　人文・自然・社会科学の数理モデル**](https://amzn.asia/d/2UivXT3)
+    - We have two copies in the lab, but only in Japanese.
+    - Support websites with sample codes are also available [here](https://github.com/ohmsha/MHBooks/tree/master/ComputerSimulation).
+- Additional: how to make UIs: Maybe Terry can hold an additional session covering PyGwalker and Streamlit.
 
+### Misc
+- Record for those who are absent (Please remind me!)
+- Stock presentation slides to be reusable
+- Flexible Schedule
 
+---
 以下は[ここ](https://github.com/ohmsha/MHBooks/tree/master/ComputerSimulation)よりコピー
 
 ### 正誤表
