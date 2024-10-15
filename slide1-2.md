@@ -31,8 +31,9 @@ style:
 
 --
 - A **model** is a simplified version of something - a graphical, mathematical, or physical representation that abstracts reality to eliminate some complexity. (INCOSE)
+  - ref. “All Models are wrong, but some are useful.” (Box, 1976)
 - Model categorization: physical model, logical model
-  - Conceptual model and computational model
+  - Conceptual/descriptive model and computational/analytical model
  
 ---
 
@@ -72,8 +73,8 @@ style:
 ---
 
 ### システム / **System**
-- A system is a construct or collection of different elements that together produce results not obtainable by the elements alone (INCOSE)
-- System has Objective, Multiple elements, Structure (network), and Controllability (Fujita, 2023)
+- A system is a construct or collection of different elements that together produce results not obtainable by the elements alone. (INCOSE)
+- System has Objective, Multiple elements, Structure (network), and Controllability. (Fujita, 2023)
 ![bg right:62%](./fig/system.png)
 
 ---
@@ -570,14 +571,13 @@ $$
 $$
 
 - 初期条件 (initial condition): $y(0) = 1$
-- 範囲 (range): $x \in [0, 2]$
+- 範囲 (range): $x \in [0, 1]$
 
-**ヒント**: `scipy.integrate.solve_ivp` を使用して数値的に解くことができます。  
 **Hint**: You can use `scipy.integrate.solve_ivp` to solve this numerically.
 
----
+<!-- --- -->
 
-### 解答例 (Pythonコード) / **Example Solution (Python Code)**
+<!-- ### 解答例 (Pythonコード) / **Example Solution (Python Code)**
 
 ```python
 import numpy as np
@@ -593,13 +593,13 @@ def dydx(x, y):
 # Initial condition y(0) = 1
 y0 = [1]
 
-# x の範囲 [0, 2]
-# Range of x: [0, 2]
-x_range = (0, 2)
+# x の範囲 [0, 1]
+# Range of x: [0, 1]
+x_range = (0, 1)
 
 # 微分方程式を解く
 # Solve the ODE
-solution = solve_ivp(dydx, x_range, y0, t_eval=np.linspace(0, 2, 100))
+solution = solve_ivp(dydx, x_range, y0, t_eval=np.linspace(0, 1, 100))
 
 # 結果をプロット
 # Plot the result
@@ -610,7 +610,7 @@ plt.title(r'$\frac{dy}{dx} = y^2 - x$')
 plt.legend()
 plt.grid(True)
 plt.show()
-```
+``` -->
 
 <style>
 /* スライドの基本設定 */
