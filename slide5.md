@@ -113,7 +113,7 @@ math: mathjax
 ---
 
 ## **5.5 Chaos**
-- **Chaos** is complex system which is deterministic but hard to its predict future behavior due to **sensitive dependence on the initial conditions (初期値鋭敏性)**
+- **Chaos** is complex system which is deterministic but hard to predict its future behavior due to **sensitive dependence on the initial conditions (初期値鋭敏性)**
 
 - ***EXERCISE #1***: Depict **Lorenz attractor**
   - $\frac{dx(t)}{dt}=s(y-x)$ #8
@@ -124,7 +124,7 @@ math: mathjax
 
 - ***EXERCISE #2***: Depict chaos of **logistic equation**
   - $x(n+1)=ax(n)(1-x(n)), (n=0, 1, 2,... )$ #11
-  - Check different types of behavior for the value of $x(n), with different $a$
+  - Check different types of behavior for the value of $x(n)$, with different $a$
   - Change the initial value of $x(0)$ to check sensitive dependence on the initial conditions (e.g. x(0)=0.01 -> x(0)=0.010001)
   - Generate figures for the values of $a$ and $x(n)$ (**logistic maps**)
 
