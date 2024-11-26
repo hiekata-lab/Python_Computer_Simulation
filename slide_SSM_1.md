@@ -16,10 +16,10 @@ math: mathjax
 --
 
 ## **1. Motivation for Social System Modeling**
-## **2. Resolution of model**
-## **3. Modeling flow**
-## **4. Verification, Validation and Accreditation**
-## **5. Setting of simulation**
+## **2. Modeling flow**
+## **3. Resolution of model**
+## **4. Reliability evaluation of model**
+## **5. Parameter setting of model**
 ## **6. Scenario analysis**
 
 ---
@@ -33,29 +33,43 @@ math: mathjax
     2. Members of societies last for some time; they don't dismiss soon.
     3. Members are organized.
     4. There are boundaries deviding people into members and non-members
-- Why do we model social systems?
+- Why do you model social systems?
   - Some social systems have problems or unknowns.
-  - You describe concepts of such social systems with natural langages, equations, or figures.
-  - And then, you embody the concepts with computers and programming languages.
-  - Finally, you solve or comprehend the social systems with your models.
+  - Such problems and unknowns are often tough to solve or analyze due to complexity and uncertainty (不確実性) of the social systems.
+  - Social system modeling enables you to deal with the comlexity and uncertainty and tackle the problems and unknowns in a better way.
  
 ---
 
-### **2. Resolution of model**
+### **2. Modeling flow**
+1. Identify problems in society.
+2. Define a social system.
+3. Describe concepts and structures of the social systems with natural langages, equations, or figures.
+4. Program the conceptual model into computerized model with computers and programming languages.
+5. Evaluate reliability of the models.
+6. Set parameters of the computerized models.
+7. Conduct scenario analyses.
 
-- **Resolution (解像度)** of model
+![bg right:52%](./fig/sargent.png)
+
+---
+
+### **3. Resolution of model**
+
+- **Resolution (解像度)** of model as a hint to build conceptual models
   - How detailed can you describe a target?
-  - There are mainly three types of social model depending on resolution.
+- There are mainly three types of social model depending on resolution.
+  - Objectives of cocial system modeling have large effects on resolution.
+  - Resolution has large effects on **reliability evaluation (信頼性の評価)** of model.
 
-| Resolution         | Description                                                                       | Objective                                                                                              | Validation                                                         | 
+| Resolution         | Description                                                                       | Objective                                                                                              | Reliability evaluation                                                         | 
 | ------------------ | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------ | 
 | **Abstract model**     | Simple models with a few essential structures                                     | - To comprehend micro-macro link mechanisms<br>- To build theories<br>- To obtain insights             | - Acceptable micro behavior and holistic features of system        | 
-| **Middle-range model** | More realistic models with more parameters, describing specific situations        | - To build prototypes to support  decision making<br>- Comfirm or generate **stylized facts (定型化事実)** | - Consistency with stylized facts                                  | 
+| **Middle-range model** | More realistic models with more parameters, describing specific situations        | - To build prototypes to support  decision-making<br>- To comfirm or generate stylized facts | - Consistency with stylized facts                                  | 
 | **Facsimile model**    | Most realistic models with less universality, describing very specific situations | - To conduct scenario analyses                                                                         | - Survey on agents' behavior model<br>- Consistency with real data | 
 
 ---
 
-### **2.1 Example of abstract model: Segregation model**
+### **3.1 Example of abstract model: Segregation model**
 - **Segregation (分居) model** by Schelling in 1971
 - There are 2 types of agents on cells.
 - One type of agent on a cell stay there when it finds fewer another type of agent on Moore neighborhood (ムーア近傍) than threashold.
@@ -66,18 +80,19 @@ math: mathjax
 
 ---
 
-### **2.2 Example of middle-range model: Variation types for box office of film market**
+### **3.2 Example of middle-range model: Variation types for box office of film market**
 -  and  proposed by Ainslie et al. in 2005
-- **Blockbuster-type** has an early and high peak.
-- **Sleeper-type** is slow start and has a late and short peak.
+- There are two **stylized facts (定型化事実)** in film market.
+  - **Blockbuster-type** has an early and high peak.
+  - **Sleeper-type** is slow start and has a late and short peak.
 - The model focus on film market but does not mention any specific work.
-- The model helps confirm and analyze stylized facts, and helps creates prototypes to support decision making on advatisement and marketing.
+- The model helps confirm and analyze stylized facts, and helps creates prototypes to support decision-making on advatisement and marketing.
 
 ![bg right:50%](./fig/SSM/BoxOffice.png)
 
 ---
 
-### **2.3 Example of facsimile model: Epidemic prevention**
+### **3.3 Example of facsimile model: Epidemic prevention**
 - Analyses of COVID-19 by SIR model by Kartono et al. in 2021
 - **SIR model** is a very general model but it is applied to a specific epidemic and specific countries at specific period in this study.
 - The model includes parameters validated by real data.
@@ -87,21 +102,29 @@ math: mathjax
 
 ---
 
-### **3. Modeling flow**
-1. Identify problems in society.
-2. Define a social system.
-3. Describe concepts and structures of the social systems with natural langages, equations, or figures.
+### **3.4 Exercise for your research in terms of resolution**
+- What type of model do you build in your research?
+- Can you pick up one research project of yours to classify into abstract model, middle-range model, or facsimile model?
+- How would you build the other types of model with the same research theme?
+  1. Abstract model: Environmental action by penalty and reward
+  2. Middle-range model: Analysis on GHG emission mitigation in international maritime transport focusing on the relationship between carbon levy (炭素課金) and freight rate (運賃)
+  3. Facsimile model: Evaluation of the environment regulations for net-zero GHG emissions by 2050 in international maritime transport
 
 ---
 
-### **4. Verification, Validation and Accreditation**
-1. Identify problems in society.
-2. Define a social system.
-3. Describe concepts and structures of the social systems with natural langages, equations, or figures.
+### **4. Reliability evaluation of model**
+- It is imortant to evaluate how you can trust models you build.
+- There are mainly three ways to evaluate your models.
+  1. **Verification (正当性の評価)**: How right do computerized models work?
+  2. **Validation (妥当性の評価)**: How right do you build conceptual models?
+  3. **Accreditation (実行承認性の確認)**: 
+- How do you evaluate and guarantee your models with these methods? -> Go to the special session #2
+
+![bg right:50%](./fig/sargent.png)
 
 ---
 
-### **5. Setting of simulation**
+### **5. Parameter setting of model**
 - The main challenge for building models is setting parameters.
 - There are mainly six ways to set parameters of model
   1. Collect and refer to real data.
@@ -114,9 +137,10 @@ math: mathjax
 ---
 
 ### **6. Scenario analysis**
-- What is about **scenario analysis**?
+- You cannot remove all uncertainties from social simulations.
+- **Scenario analyses (シナリオ分析)** help visualize bunches of possibility (可能性の束) and support future decision-making.
 - There are mainly three ways to analyse simulation results.
-  1. **What-if analysis** -> Go to the special session #2
+  1. **What-if analysis (What-if分析)** -> Go to the special session #2
   2. **Uncertainty analysis (不確実性分析)** -> Go to the special session #2
   3. **Hypothetical scenario analysis (仮説シナリオ分析)** -> Go to the special session #2
 
@@ -150,7 +174,7 @@ ul {
 }
 
 table {
-  font-size: 16pt; /* 文字サイズを12ptに設定 */
+  font-size: 15pt; /* 文字サイズを12ptに設定 */
   margin: auto;
   text-align: left;
 }
