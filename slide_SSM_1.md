@@ -69,7 +69,7 @@ math: mathjax
 
 ---
 
-### **3.1 Example of abstract model: Segregation model**
+### **3.1 Example of abstract model**
 - **Segregation (分居) model** by Schelling in 1971
 - There are 2 types of agents on cells.
 - One type of agent on a cell stay there when it finds fewer another type of agent on Moore neighborhood (ムーア近傍) than threashold.
@@ -80,20 +80,20 @@ math: mathjax
 
 ---
 
-### **3.2 Example of middle-range model: Variation types for box office of film market**
--  and  proposed by Ainslie et al. in 2005
+### **3.2 Example of middle-range model**
+- Variation types for box office of film market proposed by Ainslie et al. in 2005
 - There are two **stylized facts (定型化事実)** in film market.
   - **Blockbuster-type** has an early and high peak.
   - **Sleeper-type** is slow start and has a late and short peak.
 - The model focus on film market but does not mention any specific work.
 - The model helps confirm and analyze stylized facts, and helps creates prototypes to support decision-making on advatisement and marketing.
 
-![bg right:50%](./fig/SSM/BoxOffice.png)
+![bg right:45%](./fig/SSM/BoxOffice.png)
 
 ---
 
-### **3.3 Example of facsimile model: Epidemic prevention**
-- Analyses of COVID-19 by SIR model by Kartono et al. in 2021
+### **3.3 Example of facsimile model**
+- Analyses on COVID-19 by SIR model by Kartono et al. in 2021
 - **SIR model** is a very general model but it is applied to a specific epidemic and specific countries at specific period in this study.
 - The model includes parameters validated by real data.
 - The model help forecast long-term trend of COVID-19 in specific countries.
@@ -131,7 +131,7 @@ math: mathjax
   2. Conduct **sensitive analyses (感度分析)**. -> Go to the special session #2
   3. Conduct **inversive simulations (逆シミュレーション)**. -> Go to the special session #2
   4. Conduct **virtual grounding** -> Go to the special session #2
-  5. Estimate parameters by Bayesian network -> Go to the special session #2
+  5. Estimate parameters by **Bayesian network** -> Go to the special session #2
   6. Adopt unknown or uncertain parameters as scenario -> Go to the next slide
 
 ---
