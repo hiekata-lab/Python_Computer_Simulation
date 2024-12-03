@@ -71,7 +71,7 @@ Therefore, after 30 months, the rate of decline in the principal gradually incre
 ### **6.1 Some Simple Examples**
 - ***6.1.2 Break-even point***: 
   calculate **break-even point**:
-![w:100](./fig/chapter6/CS2.png)
+![bg right:40%](./fig/chapter6/CS2.png)
 At the intersection（break-even point） on the left side, a loss occurs if the value is below and a profit occurs if the value is above
 
 ---
