@@ -106,13 +106,13 @@ math: mathjax
 
 ### **3.4 Exercise for your research in terms of resolution**
 - What type of model do you build in your research?
-- Can you pick up one research project of yours to classify into abstract model, middle-range model, or facsimile model?
-- How would you build the other types of model with the same research theme?
-  - An example↓
-  1. Abstract model: Environmental action by penalty and reward
-  2. Middle-range model: Analysis on GHG emission mitigation in international maritime transport focusing on the relationship between carbon levy (炭素課金) and freight rate (運賃)
-  3. Facsimile model: Evaluation of the environment regulations for net-zero GHG emissions by 2050 in international maritime transport
-- If you consider your research projects do not model social systems, explain the reasons refering to the difinitions of society on slide #3.
+  1. Pick up one research project of yours to consider which the project is social system modeling or not, refering to the difinitions of society on slide #3. Otherwise, show the reasons why your project is not social system modeling.
+  2. Classify your research project into abstract model, middle-range model, or facsimile model.
+  3. Consider how you would build the other types of model with the same research theme.
+- An example is shown below.
+  - Abstract model: Environmental action by penalty and reward
+  - Middle-range model: Analysis on GHG emission mitigation in international maritime transport focusing on the relationship between carbon levy (炭素課金) and freight rate (運賃)
+  - Facsimile model: Evaluation of the environment regulations for net-zero GHG emissions by 2050 in international maritime transport (Original reserach project)
 
 ---
 
