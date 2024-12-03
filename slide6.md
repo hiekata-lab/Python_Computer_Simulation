@@ -53,7 +53,7 @@ It is a mechanism whereby the customer borrows money from a financial institutio
 ---
 ### **6.1 Some Simple Examples**
 - ***6.1.1 Revolving Payment***: 
-![w:500](./fig/Chap6/RP.png)
+![w:500](./fig/Chapter6/RP.png)
   - Left one shows the upward convexity of the graph as the remaining balance changes.
 Therefore, after 30 months, the rate of decline in the principal gradually increases.   
   - Right one shows the percentage of cash payments out of the monthly fixed payment gradually becomes larger.
@@ -65,13 +65,13 @@ Therefore, after 30 months, the rate of decline in the principal gradually incre
    **varible cost**: raw material costs, purchase costs, transportation costs...
    **nonlinear varible cost** : a typical sales environment (e.g., weather, traffic conditions...)
    **cost** : fixed cost + varible cost + nonlinear varible cost
-![w:500](./fig/Chap6/Cost1.png)
+![w:500](./fig/Chapter6/Cost1.png)
 
 ---
 ### **6.1 Some Simple Examples**
 - ***6.1.2 Break-even point***: 
   calculate **break-even point**:
-![w:100](./fig/Chap6/CS2.png)
+![w:100](./fig/Chapter6/CS2.png)
 At the intersection（break-even point） on the left side, a loss occurs if the value is below and a profit occurs if the value is above
 
 ---
@@ -94,7 +94,7 @@ At the intersection（break-even point） on the left side, a loss occurs if the
 ---
 ## **6.2 Linear Programming (LP)**
 - ***6.2.2 Can use PuLP***: 
-  ![w:500](./fig/Chap6/PuLP.png)
+  ![w:500](./fig/Chapter6/PuLP.png)
 ---
 ## **6.2 Linear Programming (LP)**
 - ***6.2.3 Simulation sample***: 
@@ -144,7 +144,7 @@ At the intersection（break-even point） on the left side, a loss occurs if the
 ## **6.3 Inventory management**
 - ***6.3.5 Sample of simulation***:
   -> check MM_Inventory.ipynb
-  ![w:500](./fig/Chap6/IN.png)
+  ![w:500](./fig/Chapter6/IN.png)
   - It can be seen that the inventory volume is smaller in the order placement method.
 
 
@@ -171,8 +171,8 @@ At the intersection（break-even point） on the left side, a loss occurs if the
 ##  **6.4 Queueing Theory**
 - ***6.4.3 Poisson Arrival Process and Arrival Time Distribution***:
   ->Check MM_Poisson.ipynb
-    ![w:500](./fig/Chap6/ED.png)
-    ![w:200](./fig/Chap6/POSI.png)
+    ![w:500](./fig/Chapter6/ED.png)
+    ![w:200](./fig/Chapter6/POSI.png)
     The larger $\lambda$ is considered shorter for the time distribution until the next guest arrives. 
 ---
 ##  **6.4 Queueing Theory**
@@ -198,7 +198,7 @@ At the intersection（break-even point） on the left side, a loss occurs if the
   - SimPy is a discrete-event simulation that can be run on Python, and is a type of event-driven programming.
 - - ***6.4.6 Use SimPy to do M|M|1 simulation***:
   -> Check MM_MM1.ipynb
-     ![w:500](./fig/Chap6/SimpySI.png)
+     ![w:500](./fig/Chapter6/SimpySI.png)
   - The vertical axis shows the number of waiting customers, and the range on the horizontal axis in the left figure is simulation time. 
      We can see that a maximum of 16 people are waiting in line (left graph). 
     We can use it to studing about what effect does the maximum waiting line have on the level of customer satisfaction? How many more windows will you need to achieve a good balance between cost, customer satisfaction and brand?...
