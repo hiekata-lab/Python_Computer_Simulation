@@ -75,3 +75,11 @@ page 4
 
 page 5
 - ただし，過去の t --> ただし，t （このtに過去も未来も関係しません）
+
+
+### Bayesian Simulation
+
+Please visit 
+https://colab.research.google.com/drive/1TTVb3XPKO1o9U28AmvNQdjbnUzUghuKh?usp=sharing
+
+Copy and run it on your own google drive
