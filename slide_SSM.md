@@ -191,7 +191,7 @@ math: mathjax
 - How to set parameters by sensitive analysis?
   1. Select parameters for the analysis.
   2. Analyze the relationships and influences of the parameters.
-  - Parameters can be set independently if the parameters if the parameters affect each different objective functions.
+  - Parameters can be set independently if the parameters affect each different objective functions.
   - Parameters should be determined in order of influence if the parameters affect same objective functions.
   3. Prepare options for the parameters and objective functions.
   4. Conduct simulations to pick up a set of options which optimize the objective functions.
@@ -213,14 +213,15 @@ math: mathjax
 
 ### **5.3. Virtual grounding**
 - **Grounding** is a method to collect data for modeling by questionnaire or survey.
-- Virtual grounding is another method of creating virtual world to have participants make decisions there and collecting data for modeling, when questionnaires and surveys are not available.
-- An example of situation requiring virtual grounding
-  - Modeling behavior of the visitors at Disney Land requires comprehensive data of the visitors, such as movement log and perchase history.
-  - But the theme park does not allow to take questionnaires nor put GPS on the visitors there.
+- Virtual grounding is another method of creating virtual world to have participants make decisions there and collecting data for modeling...
+  - when questionnaires and surveys are not available.
+  - when modeling situations that rarely occur.
+  - when modeling situations threatening the participants.
 - How to set parameters by virtual grounding?
   1. Extract qualitative characteristics of agents from a terget system to determine the behavior structures of the agents with accepted existing models, such as **multinomial logit model (多項ロジットモデル)**.
   2. Collect participants to make decisions in the virtual situation.
-  3. Estimate the values of parameters based on the data with methods corresponding to the models adopted at Step 1, such as **maximum likelihood estimation (最尤推定)** for multinomial logit model.
+  3. Estimate the values of parameters based on the data with methods corresponding to the models adopted at Step 1, such as **maximum likelihood estimation (最尤推定)**.
+- You can refer to the textbook for an example of modeling visitors' behavior at Disney Land by virtual grounding.
 
 ---
 
@@ -270,7 +271,7 @@ math: mathjax
 - It is meaningful to see if specific uncertainties in models affect significantly the simulation results or not.
   - ***If the uncertainties affect significantly the results, you can discuss how important it is to mitigate the uncertainties.***
   - ***Otherwise, you can discuss that the uncertainties are not so important for the scenario analysis.***
-- You can refer to the textbook to for an example of analysing achievement evaluation system (業績評価制度) for companies by uncertainty analysis.
+- You can refer to the textbook for an example of analysing achievement evaluation system (業績評価制度) for companies by uncertainty analysis.
 
 ---
 
