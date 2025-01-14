@@ -1,8 +1,8 @@
 ---
-marp: false
-theme: default
+marp: true
+theme: gaia
 paginate: true
-math: mathjax
+style: 
 ---
 
 # 強化学習による意思決定モデル
@@ -229,3 +229,39 @@ $$ Q(s,a) <- (1 - α)Q(s,a) + α(r + γmax_{p}Q(s',p)) $$
 
 - 他にも画像を入力とした畳み込みネットワーク(CNN)と強化学習の組み合わせもある
 - There are also combinations of convolutional networks (CNN) that use images as input and reinforcement learning.
+
+<style>
+/* スライドの基本設定 */
+section {
+  font-size: 20pt;  /* 本文のフォントサイズ */
+  color: #333333;   /* 本文の色 */
+}
+
+/* 見出しのカスタマイズ */
+h1 {
+  font-size: 32pt;  /* h1 見出しのフォントサイズ */
+  color: #2E8B57;   /* h1 見出しの色 */
+}
+
+h2 {
+  font-size: 28pt;  /* h2 見出しのフォントサイズ */
+  color: #4682B4;   /* h2 見出しの色 */
+}
+
+/* スライドの背景色を変更したい場合 */
+section {
+  background-color: #f9f9f9;  /* 背景色 */
+}
+
+/* 箇条書きリストのカスタマイズ */
+ul {
+  font-size: 18pt;  /* 箇条書きのフォントサイズ */
+}
+
+table {
+  font-size: 10pt; /* 文字サイズを12ptに設定 */
+  margin: auto;
+  text-align: left;
+}
+
+</style>
